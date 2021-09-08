@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="offset-2 col-md-8">
+        <h2>Yeni Blog Ekle</h2>
+        <hr class="mb-4">
+        <form class="needs-validation" action="/dashboard/posts/new" method="POST">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Başlık</label>
+                    <input type="text" class="form-control" name="title" required>
+                    <div class="invalid-feedback">
+                        Başlık girmelisiniz.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="country">Kategori</label>
+                    <select class="custom-select d-block w-100" name="category" required>
+                        <option value="">Kategori seç...</option>
+                        <option value="Yazılım">Yazılım</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Lütfen bir kategori seçin.
+                    </div>
+                </div>
+            </div>
+        
+            <div class="mb-3">
+                <label for="address">İçerik</label>
+                <textarea class="form-control" name="content" rows="10" required></textarea>
+                <div class="invalid-feedback">
+                    İçerik girmelisiniz.
+                </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-block" type="submit">Paylaş</button>
+        </form>
+    </div>
+</div>
