@@ -3,36 +3,36 @@ const router = express.Router()
 const Post = require('../models/Post')
 
 router.get('/', function (req, res) {
-    res.render('home')
+    res.render('home', { title: 'Anasayfa' })
 })
 
 router.get('/blog', function (req, res) {
     Post.find({}).then(posts => {
-        res.render('blog', { posts:posts })
+        res.render('blog', { posts: posts, title: 'Blog' })
     })
 })
 
 router.get('/blog/:id', function (req, res) {
     const postId = req.params.id
     Post.findById({ _id: postId }).then(post => {
-        res.render('blog-single', { post: post })
+        res.render('blog-single', { post: post, title: post.title })
     })
 })
 
 router.get('/about', function (req, res) {
-    res.render('about')
+    res.render('about', { title: 'Hakkımızda' })
 })
 
 router.get('/contact', function (req, res) {
-    res.render('contact')
+    res.render('contact', { title: 'İletişim' })
 })
 
 router.get('/login', function (req, res) {
-    res.render('dashboard/login', { layout: false })
+    res.render('dashboard/login', { layout: false, title: 'Giriş yap' })
 })
 
 router.get('/register', function (req, res) {
-    res.render('dashboard/register', { layout: false })
+    res.render('dashboard/register', { layout: false, title: 'Kayıt ol' })
 })
 
 module.exports = router
