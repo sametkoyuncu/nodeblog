@@ -12,6 +12,13 @@ router.get('/blog', function (req, res) {
     })
 })
 
+router.get('/blog/:id', function (req, res) {
+    const postId = req.params.id
+    Post.findById({ _id: postId }).then(post => {
+        res.render('blog-single', { post: post })
+    })
+})
+
 router.get('/about', function (req, res) {
     res.render('about')
 })

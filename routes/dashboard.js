@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Post = require('../models/Post')
+const path = require('path')
 
 router.get('/', function (req, res) {
     res.render('dashboard/home', { layout: 'dashboard' })
@@ -13,8 +14,15 @@ router.get('/posts/new', function (req, res) {
 })
 
 router.post('/posts/new', function (req, res) {
-    Post.create(req.body)
-    res.send('Ok')
+    let postImage = req.files.image
+    let postImageName = Date.now() + postImage.name
+    postImage.mv(path.resolve(__dirname, '../public/img/uploaded/posts', postImageName))
+    
+    Post.create({
+        ...req.body,
+        image: `/img/uploaded/posts/${postImageName}`
+    })
+    res.render('dashboard/home', { layout: 'dashboard' })
 })
 
 //ACCOUNT ROUTES

@@ -1,14 +1,19 @@
 const express = require('express')
 const Handlebars = require('handlebars')
 const exphbs = require('express-handlebars')
+
 require('./mongo-connection')
 const app = express();
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
+
 const mainRouter = require('./routes/main')
 const dashboardRouter = require('./routes/dashboard')
 const bodyParser = require('body-parser')
+const fileUpload = require('express-fileupload')
 
 const port = 3000
+
+app.use(fileUpload())
 
 app.use(express.static('public'))
 
