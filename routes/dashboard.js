@@ -22,7 +22,7 @@ router.post('/posts/new', function (req, res) {
         ...req.body,
         image: `/img/uploaded/posts/${postImageName}`
     })
-    res.render('dashboard/home', { layout: 'dashboard' })
+    res.status(201).render('dashboard/home', { layout: 'dashboard' })
 })
 
 //ACCOUNT ROUTES
