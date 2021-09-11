@@ -4,10 +4,16 @@ const Post = require('../models/Post')
 const path = require('path')
 
 router.get('/', function (req, res) {
-    res.render('dashboard/home', { layout: 'dashboard' })
+    res.render('dashboard/home', { layout: 'dashboard', title: 'Anasayfa' })
 })
 
 //POST ROUTES
+
+router.get('/posts', function (req, res) {
+    Post.find({}).then(posts => {
+        res.render('dashboard/posts', { layout: 'dashboard', posts: posts, title: 'Blog Listesi' })
+    })
+})
 
 router.get('/posts/new', function (req, res) {
     res.render('dashboard/post-create', { layout: 'dashboard' })
