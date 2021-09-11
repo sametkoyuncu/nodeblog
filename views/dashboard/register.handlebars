@@ -1,53 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    {{!--
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico"> --}}
 
-    <title>Floating labels example for Bootstrap</title>
+    <title>{{title}}</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/floating-labels/">
+    <!-- Custom fonts for this template-->
+    <link href="/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="dashboard/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/dashboard/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="dashboard/floating-labels.css" rel="stylesheet">
 </head>
 
-<body>
-    <form class="form-signup">
-        <div class="form-label-group">
-            <h1 class="text-center">🦸</h1>
-            <h2 class="text-center">Yeni hesap oluşturun..</h2>
-            <hr>
-        </div>
-        <div class="form-label-group">
-            <input type="text" id="inputUsername" class="form-control" placeholder="Kullanıcı Adı" required autofocus>
-            <label for="inputUsername">Kullanıcı Adı</label>
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Hesap oluştur! 🦸</h1>
+                            </div>
+                            <form class="user">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="Ad">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                            placeholder="Soyad">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Eposta Adresi">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Parola">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Parola (Tekrar)">
+                                    </div>
+                                </div>
+                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                    Kaydol
+                                </a>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="/forgot-password">Parolamı unuttum.</a>
+                                <span>|</span>
+                                <a class="small" href="/login">Zaten bir hesabın var mı? Giriş yap!</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small text-secondary" href="/">Anasayfaya dön..</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="form-label-group">
-            <input type="email" id="inputEmail" class="form-control" placeholder="Eposta Adresi" required autofocus>
-            <label for="inputEmail">Eposta Adresi</label>
-        </div>
+    </div>
 
-        <div class="form-label-group">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Parola" required>
-            <label for="inputPassword">Parola</label>
-        </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/dashboard/vendor/jquery/jquery.min.js"></script>
+    <script src="/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <div class="form-label-group">
-            <input type="password" id="inputPassword2" class="form-control" placeholder="Parola Onayı" required>
-            <label for="inputPassword2">Parola Onayı</label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Kaydol</button>
-    </form>
+    <!-- Core plugin JavaScript-->
+    <script src="/dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/dashboard/js/sb-admin-2.min.js"></script>
+
 </body>
 
 </html>

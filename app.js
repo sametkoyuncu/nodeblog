@@ -24,6 +24,8 @@ app.engine('handlebars', exphbs({
 }))
 
 app.set('view engine', 'handlebars')
+// body parser yerine geçiyor gibi
+// app.use(express.urlencoded({ extended: true }))
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
