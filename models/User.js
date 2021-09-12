@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, require: true, unique: true },
     password: { type: String, required: true },
-    image: { type: String, default: '../public/dashboard/img/uploaded/users/default.svg' }
+    image: { type: String, default: '/dashboard/img/uploaded/users/default.svg' }
 }, { timestamps: true })
 
 UserSchema.statics.login = async function (email, password) {

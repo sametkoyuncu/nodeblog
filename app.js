@@ -10,8 +10,11 @@ const mainRouter = require('./routes/main')
 const dashboardRouter = require('./routes/dashboard')
 const accountRouter = require('./routes/account')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const fileUpload = require('express-fileupload')
 const generateDate = require('./helpers/generateDate').generateDate
+const { requireAuth, checkUser } = require('./middlewares/authMiddleware')
+const expressSession = require('express-session')
 
 const port = 3000
 
@@ -34,8 +37,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+app.use(cookieParser())
+// app.use(expressSession())
+
+app.get('*', checkUser)
 app.use('/', mainRouter)
-app.use('/dashboard', dashboardRouter)
+app.use('/dashboard', requireAuth, dashboardRouter)
 app.use('/account', accountRouter)
 
 app.listen(port, () => {

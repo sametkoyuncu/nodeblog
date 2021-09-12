@@ -27,12 +27,4 @@ router.get('/contact', function (req, res) {
     res.render('contact', { title: 'İletişim' })
 })
 
-router.get('/login', function (req, res) {
-    res.render('dashboard/login', { layout: false, title: 'Giriş yap' })
-})
-
-router.get('/register', function (req, res) {
-    res.render('dashboard/register', { layout: false, title: 'Kayıt ol' })
-})
-
 module.exports = router

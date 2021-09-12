@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 const maxAge = 60*60*24
 
 const createToken = (id) => {
-	return jwt.sign({id}, 'pars barut cesur duman', { expiresIn: maxAge})
+	return jwt.sign({id}, 'parsbarut', { expiresIn: maxAge })
 }
 
 router.get('/login', function (req, res) {
@@ -19,7 +19,7 @@ router.post('/login', async function (req, res) {
 	try {
 		const user = await User.login(email, password)
 		const token = createToken(user._id)
-		res.cookie('nodeblog_cookie', token, { httpOnly: true, maxAge: maxAge * 1000 })
+		res.cookie('nodeblogCookie', token, { httpOnly: true, maxAge: maxAge * 1000 })
 		res.redirect('/dashboard')
 	} catch(e) {
 		console.log(e)
@@ -41,7 +41,7 @@ router.post('/register', function (req, res) {
 })
 
 router.get('/logout', function (req, res) {
-	res.cookie('nodeblog_cookie','',{maxAge: 1})
+	res.cookie('nodeblogCookie', '', { maxAge: 1 })
 	res.redirect('/account/login')
 })
 

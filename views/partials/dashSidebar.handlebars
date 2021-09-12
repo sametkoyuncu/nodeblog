@@ -1,11 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Nodeblog</div>
     </a>
 
     <!-- Divider -->
@@ -15,25 +15,57 @@
     <li class="nav-item">
         <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Anasayfa</span></a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    {{!-- <div class="sidebar-heading">
         Blog
     </div>
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/posts">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Bloglar</span></a>
+            <span>Blog Listesi</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/posts/new">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Blog Ekle</span></a>
+    </li> --}}
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Blog</span>
+        </a>
+        <div id="collapseBlog" class="collapse" aria-labelledby="headingBlog" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{!-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                <a class="collapse-item" href="/dashboard/posts"><i class="fas fa-fw fa-list"></i> Blog Listesi</a>
+                <a class="collapse-item" href="/dashboard/posts/new"><i class="fas fa-fw fa-plus"></i> Yeni Ekle</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSayfalar" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Sayfalar</span>
+        </a>
+        <div id="collapseSayfalar" class="collapse" aria-labelledby="headingSayfalar" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{!-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                <a class="collapse-item" href="#"><i class="fas fa-fw fa-users"></i> Hakkımızda</a>
+                <a class="collapse-item" href="#"><i class="fas fa-fw fa-envelope"></i> İletişim</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->
