@@ -9,6 +9,20 @@ const UserSchema = new mongoose.Schema({
     image: { type: String, default: '../public/dashboard/img/uploaded/users/default.svg' }
 }, { timestamps: true })
 
+UserSchema.statics.login = async function (email, password) {
+    const user = await this.findOne({ email })
+    if (!user) {
+        throw Error('Eposta veya parola hatalı!')
+    }
+
+    const auth = await bcrypt.compare(password, user.password)
+
+    if (!auth) {
+        throw Error('Eposta veya parola hatalı!')
+    }
+    return user
+}
+
 UserSchema.pre('save', async function (next) {
     const salt = await bcrypt.genSalt()
     this.password = await bcrypt.hash(this.password, salt)
