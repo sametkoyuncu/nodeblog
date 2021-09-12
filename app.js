@@ -8,6 +8,7 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 
 const mainRouter = require('./routes/main')
 const dashboardRouter = require('./routes/dashboard')
+const accountRouter = require('./routes/account')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 const generateDate = require('./helpers/generateDate').generateDate
@@ -35,6 +36,7 @@ app.use(bodyParser.json())
 
 app.use('/', mainRouter)
 app.use('/dashboard', dashboardRouter)
+app.use('/account', accountRouter)
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

@@ -31,14 +31,4 @@ router.post('/posts/new', function (req, res) {
     res.status(201).render('dashboard/home', { layout: 'dashboard' })
 })
 
-//ACCOUNT ROUTES
-
-router.get('/login', function (req, res) {
-    res.render('dashboard/login', { layout: false })
-})
-
-router.get('/register', function (req, res) {
-    res.render('dashboard/register', { layout: false })
-})
-
 module.exports = router
