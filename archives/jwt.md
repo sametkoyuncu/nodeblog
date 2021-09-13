@@ -1,3 +1,6 @@
+# install
+> npm i jsonwebtoken
+> npm i cookie-parser
 # /middlewares/authMiddleware.js
 
 > const jwt = require('jsonwebtoken')
