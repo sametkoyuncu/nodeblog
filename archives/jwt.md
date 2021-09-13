@@ -45,6 +45,7 @@ module.exports = {
   requireAuth,
   checkUser
 }
+
 `
 
 # /routes/account.js
@@ -97,7 +98,9 @@ router.get('/logout', function (req, res) {
 })
 
 module.exports = router
+
 `
+
 # /views/partials/dashNavbar.handlebars
 `{{ loggedUser.firstName }} {{ loggedUser.lastName }} {{ loggedUser.image }}`
 
