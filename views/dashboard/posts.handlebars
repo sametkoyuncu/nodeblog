@@ -1,4 +1,12 @@
 <div class="container">
+    {{#if sessionFlash.message}}
+    <div class="{{sessionFlash.type}} alert-dismissible fade show" role="alert">
+        {{sessionFlash.message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
     <div class="col-md-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">

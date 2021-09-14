@@ -3,6 +3,8 @@ const Handlebars = require('handlebars')
 const exphbs = require('express-handlebars')
 
 require('./mongo-connection')
+// require('./express-session')
+
 const app = express()
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
@@ -13,9 +15,27 @@ const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 const generateDate = require('./helpers/generateDate').generateDate
 
-const expressSession = require('express-session')
-
 const port = 3000
+
+// session start
+const expressSession = require('express-session')
+const MongoStore = require('connect-mongo')
+
+app.use(expressSession({
+    secret: 'pars barut cesur duman',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://localhost:27017/nodeblog'
+    })
+}))
+// session end
+// flash - message middleware
+app.use((req, res, next) => {
+    res.locals.sessionFlash = req.session.sessionFlash
+    delete req.session.sessionFlash
+    next()
+}) 
 
 app.use(fileUpload())
 
@@ -36,9 +56,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-
-// app.use(expressSession())
-
+app.use(function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
 
 app.use('/', mainRouter)
 app.use('/dashboard', dashboardRouter)

@@ -11,7 +11,22 @@ router.post('/login', async function (req, res) {
 	const { email, password } = req.body
 	try {
 		const user = await User.login(email, password)
-	} catch(e) {
+		if (user) {
+			req.session.userId = user._id
+			req.session.userData = {
+				firstName: user.firstName,
+				lastName: user.lastName,
+				image: user.image
+			}
+			res.redirect('/dashboard')
+		}
+	} catch (e) {
+		req.session.sessionFlash = {
+			type: 'alert alert-danger',
+			message: 'Eposta veya parola hatalı! Lütfen tekrar deneyiniz.'
+		}
+
+		res.status(404).render('dashboard/login', { layout: false, title: 'Hata! Tekrar Deneyin.' })
 		console.log(e)
 	}
 })
@@ -31,7 +46,9 @@ router.post('/register', function (req, res) {
 })
 
 router.get('/logout', function (req, res) {
-	res.redirect('/account/login')
+	req.session.destroy(() => {
+		res.redirect('/')
+	})
 })
 
 module.exports = router
