@@ -27,7 +27,10 @@ router.post('/login', async function (req, res) {
 		}
 
 		res.status(404).render('dashboard/login', { layout: false, title: 'Hata! Tekrar Deneyin.' })
-		console.log(e)
+		// loggin açılırken catch' e giriyor ??
+		// daha post yapılmamışken
+		// konsola hata basıyor
+		// console.log(e)
 	}
 })
 

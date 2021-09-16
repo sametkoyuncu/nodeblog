@@ -9,7 +9,7 @@ const app = express()
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
 const mainRouter = require('./routes/main')
-const dashboardRouter = require('./routes/dashboard')
+const dashboardRouter = require('./routes/dashboard/index')
 const accountRouter = require('./routes/account')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')

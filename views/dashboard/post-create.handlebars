@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="offset-2 col-md-8">
+    <div class="col-md-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Yeni Blog Ekle</h6>
@@ -7,29 +7,28 @@
             <div class="card-body">
                 <form class="needs-validation" action="/dashboard/posts/new" method="POST" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="firstName">Başlık</label>
                             <input type="text" class="form-control" name="title" required>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="country">Kategori</label>
                             <select class="custom-select d-block w-100" name="category" required>
                                 <option value="">Kategori seç...</option>
                                 <option value="Yazılım">Yazılım</option>
                             </select>
                         </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="image">Görsel</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image" name="image">
+                                <label class="custom-file-label" for="image">Görsel Seç</label>
+                            </div>
+                        </div>
                     </div>
-                
                     <div class="mb-3">
                         <label for="address">İçerik</label>
                         <textarea class="form-control" name="content" rows="7" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="image">Görsel</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image">
-                            <label class="custom-file-label" for="image">Görsel Seç</label>
-                        </div>
                     </div>
                     <hr class="mb-4">
                     <button class="btn btn-primary btn-block mb-4" type="submit">Paylaş</button>
