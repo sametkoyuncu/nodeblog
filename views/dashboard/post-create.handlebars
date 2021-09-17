@@ -14,15 +14,17 @@
                         <div class="col-md-4 mb-3">
                             <label for="country">Kategori</label>
                             <select class="custom-select d-block w-100" name="category" required>
-                                <option value="">Kategori seç...</option>
-                                <option value="Yazılım">Yazılım</option>
+                                <option value="">Kategori seç..</option>
+                                {{#each categories}}
+                                <option value="{{_id}}">{{name}}</option>
+                                {{/each}}
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="image">Görsel</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="image" name="image">
-                                <label class="custom-file-label" for="image">Görsel Seç</label>
+                                <label class="custom-file-label" for="image">Görsel Seç..</label>
                             </div>
                         </div>
                     </div>

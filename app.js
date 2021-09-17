@@ -1,6 +1,7 @@
 const express = require('express')
 const Handlebars = require('handlebars')
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
 
 require('./mongo-connection')
 // require('./express-session')
@@ -20,7 +21,9 @@ const port = 3000
 // session start
 const expressSession = require('express-session')
 const MongoStore = require('connect-mongo')
-
+//for delete method
+app.use(methodOverride('_method'))
+//session
 app.use(expressSession({
     secret: 'pars barut cesur duman',
     resave: false,
@@ -29,7 +32,7 @@ app.use(expressSession({
         mongoUrl: 'mongodb://localhost:27017/nodeblog'
     })
 }))
-// session end
+
 // flash - message middleware
 app.use((req, res, next) => {
     res.locals.sessionFlash = req.session.sessionFlash
@@ -56,6 +59,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+// for session use in handlebars
 app.use(function (req, res, next) {
     res.locals.session = req.session;
     next();

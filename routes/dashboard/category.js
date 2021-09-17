@@ -3,27 +3,39 @@ const router = express.Router()
 const Category = require('../../models/Category')
 
 router.get('/', function (req, res) {
-    Category.find({}).then(categories => {
+    Category.find({}).sort({$natural: -1}).then(categories => {
         res.render('dashboard/categories', { layout: 'dashboard', categories: categories, title: 'Kategoriler' })
     })
 })
 
-// router.get('/new', function (req, res) {
-//     res.render('dashboard/post-create', { layout: 'dashboard', title: 'Yeni Blog Ekle' })
-// })
-
 router.post('/', function (req, res) {
-    Category.create({
-        ...req.body
+    Category.create(req.body, (error, category) => {
+        if (error) {
+            console.log(error)
+            req.session.sessionFlash = {
+                type: 'alert alert-danger',
+                message: `'${req.body.name}' isimli kategori eklenirken bir hata oluştu.`
+            }
+        }
+
+        req.session.sessionFlash = {
+            type: 'alert alert-success',
+            message: `'${req.body.name}' isimli kategori başarılı bir şekilde paylaşıldı.`
+        }
+
+        res.redirect('/dashboard/categories')
     })
+})
 
-    req.session.sessionFlash = {
-        type: 'alert alert-success',
-        message: `'${req.body.name}' isimli kategori başarılı bir şekilde paylaşıldı.`
-    }
+router.delete('/:id', function (req, res) {
+    Category.deleteOne({ _id: req.params.id }).then(() => {
+        req.session.sessionFlash = {
+            type: 'alert alert-success',
+            message: 'Kategori başarılı bir şekilde silindi.'
+        }
 
-    res.redirect('/dashboard/categories')
-    // res.status(201).render('dashboard/posts', { layout: 'dashboard' })
+        res.redirect('/dashboard/categories')
+    })
 })
 
 module.exports = router

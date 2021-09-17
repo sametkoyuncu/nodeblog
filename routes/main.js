@@ -1,20 +1,28 @@
 const express = require('express')
 const router = express.Router()
 const Post = require('../models/Post')
+const User = require('../models/User')
+const Category = require('../models/Category')
 
 router.get('/', function (req, res) {
     res.render('home', { title: 'Anasayfa' })
 })
 
 router.get('/blog', function (req, res) {
-    Post.find({}).then(posts => {
+    Post.find({})
+        .populate({ path: 'category', model: Category })
+        .then(posts => {
         res.render('blog', { posts: posts, title: 'Blog' })
     })
 })
 
 router.get('/blog/:id', function (req, res) {
     const postId = req.params.id
-    Post.findById({ _id: postId }).then(post => {
+    Post.findById({ _id: postId })
+        .populate({ path: 'author', model: User })
+        .populate({ path: 'category', model: Category })
+        .then(post => {
+            console.log(post)
         res.render('blog-single', { post: post, title: post.title })
     })
 })

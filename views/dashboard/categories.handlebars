@@ -48,9 +48,11 @@
                                 <td>{{name}}</td>
                                 <td>{{description}}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-sm btn-info" title="İncele">👁️</button>
-                                    <button type="button" class="btn btn-sm btn-success" title="Düzenle">✏️</button>
-                                    <button type="button" class="btn btn-sm btn-danger" title="Sil">❌</button>
+                                    {{!-- <button type="button" class="btn btn-sm btn-info" title="İncele">👁️</button>
+                                    <button type="button" class="btn btn-sm btn-success" title="Düzenle">✏️</button> --}}
+                                    <form method="POST" action="/dashboard/categories/{{_id}}?_method=DELETE">
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Sil"><i class="far fa-trash-alt"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             {{/each}}

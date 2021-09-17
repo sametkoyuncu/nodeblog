@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="post-meta">
-                    <a class="post-category cat-2" href="category.html">{{post.category}}</a>
+                    <a class="post-category cat-2" href="category.html">{{post.category.name}}</a>
                     <span class="post-date">{{generateDate date 'DD MMM YYYY, HH:MM'}}</span>
                 </div>
                 <h1>{{post.title}}</h1>
@@ -55,7 +55,7 @@
                             </div>
                             <div class="media-body">
                                 <div class="media-heading">
-                                    <h3>John Doe</h3>
+                                    <h3>{{post.author.firstName}} {{post.author.lastName}}</h3>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
