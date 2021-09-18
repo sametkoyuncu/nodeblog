@@ -18,8 +18,9 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Başlık</th>
+                            <th scope="col">Kategori</th>
                             <th scope="col" class="text-center">Tarih</th>
-                            <th scope="col" class="text-center">Ayarlar</th>
+                            <th scope="col" class="text-center">Eylemler</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,11 +28,14 @@
                         <tr>
                             <th scope="row">#</th>
                             <td>{{title}}</td>
+                            <td>{{category.name}}</td>
                             <td class="text-center">{{generateDate date 'DD MMM YYYY'}}</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-sm btn-info" title="İncele">👁️</button>
-                                <button type="button" class="btn btn-sm btn-success" title="Düzenle">✏️</button>
-                                <button type="button" class="btn btn-sm btn-danger" title="Sil">❌</button>
+                                <a href="/dashboard/posts/edit/{{_id}}" class="btn btn-sm btn-success" title="Düzenle">✏️</a>
+                                <form method="POST" style="display: inline-block;" action="/dashboard/posts/{{_id}}?_method=DELETE">
+                                    <button type="submit" class="btn btn-sm btn-danger" title="Sil">❌</button>
+                                </form>
                             </td>
                         </tr>
                         {{/each}}
