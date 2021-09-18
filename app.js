@@ -15,6 +15,7 @@ const accountRouter = require('./routes/account')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 const generateDate = require('./helpers/generateDate').generateDate
+const limit = require('./helpers/limit').limit
 
 const port = 3000
 
@@ -46,7 +47,7 @@ app.use(express.static('public'))
 
 app.engine('handlebars', exphbs({
     handlebars: allowInsecurePrototypeAccess(Handlebars),
-    helpers: { generateDate }
+    helpers: { generateDate, limit }
 }))
 
 app.set('view engine', 'handlebars')

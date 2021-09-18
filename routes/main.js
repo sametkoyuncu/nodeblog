@@ -12,8 +12,8 @@ router.get('/blog', function (req, res) {
     Post.find({})
         .populate({ path: 'category', model: Category })
         .then(posts => {
-        res.render('blog', { posts: posts, title: 'Blog' })
-    })
+            res.render('blog', { posts: posts, title: 'Blog' })
+        })
 })
 
 router.get('/blog/:id', function (req, res) {
@@ -22,8 +22,13 @@ router.get('/blog/:id', function (req, res) {
         .populate({ path: 'author', model: User })
         .populate({ path: 'category', model: Category })
         .then(post => {
-            console.log(post)
-        res.render('blog-single', { post: post, title: post.title })
+            Post.find({})
+                .sort({ $natural: -1 })
+                .limit(3)
+                .then(posts => {
+                    res.render('blog-single', { post: post, title: post.title, posts: posts })
+                })
+        
     })
 })
 
