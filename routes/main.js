@@ -12,7 +12,27 @@ router.get('/blog', function (req, res) {
     Post.find({})
         .populate({ path: 'category', model: Category })
         .then(posts => {
-            res.render('blog', { posts: posts, title: 'Blog' })
+            Category
+                .aggregate([
+                    {
+                        $lookup: {
+                            from: 'posts',
+                            localField: '_id',
+                            foreignField: 'category',
+                            as: 'posts'
+                        }
+                    },
+                    {
+                        $project: {
+                            _id: 1,
+                            name: 1,
+                            num_of_posts: {$size: '$posts'}
+                        }
+                    }
+                ])
+                .then(categories => {
+                    res.render('blog', { posts: posts, title: 'Blog', categories: categories })
+                })
         })
 })
 
@@ -25,8 +45,16 @@ router.get('/blog/:id', function (req, res) {
             Post.find({})
                 .sort({ $natural: -1 })
                 .limit(3)
+                .populate({ path: 'category', model: Category })
                 .then(posts => {
-                    res.render('blog-single', { post: post, title: post.title, posts: posts })
+                    Category.find({}).then(categories => {
+                        res.render('blog-single', {
+                            post: post,
+                            title: post.title,
+                            posts: posts,
+                            categories: categories
+                        })
+                    })
                 })
         
     })
