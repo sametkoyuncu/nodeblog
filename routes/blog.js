@@ -84,7 +84,6 @@ router.get('/categories/:id', function (req, res) {
                 .then(categories => {
                     Category.find({ _id: categoryId })
                         .then(category => {
-                            console.log(category[0].name)
                             res.render('blog-category', {
                                 posts: posts,
                                 title: `${category[0].name} Kategorisine Ait Bloglar`,
