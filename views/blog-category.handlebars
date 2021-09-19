@@ -1,0 +1,64 @@
+<!-- Page Header -->
+<div id="post-header" class="page-header">
+    <div class="background-img" style="background-image: url('/img/post-1.jpg');"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h1 class="text-warning">{{pageHeader}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Page Header -->
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <!-- post -->
+                    {{#each posts}}
+                        <div class="col-md-12">
+                            <div class="post post-row">
+                                <a class="post-img" href="blog-post.html"><img src="{{image}}"></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-2" href="#">{{category.name}}</a>
+                                        <span class="post-date">{{generateDate date 'DD MMM YYYY'}}</span>
+                                    </div>
+                                    <h3 class="post-title">
+                                        <a href="/blog/{{_id}}">
+                                            {{title}}
+                                        </a>
+                                    </h3>
+                                    <p>{{content}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                    <!-- /post -->
+
+                    <div class="col-md-12">
+                        <div class="section-row">
+                            <button class="primary-button center-block">Load More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- aside -->
+            <div class="col-md-4">
+                <!-- catagories -->
+                {{>sidebarCategories}}
+                <!-- post widget -->
+                {{>sidebarLastestBlogs}}
+            </div>
+            <!-- /aside -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->

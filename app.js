@@ -10,6 +10,7 @@ const app = express()
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
 const mainRouter = require('./routes/main')
+const blogRouter = require('./routes/blog')
 const dashboardRouter = require('./routes/dashboard/index')
 const accountRouter = require('./routes/account')
 const bodyParser = require('body-parser')
@@ -67,6 +68,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', mainRouter)
+app.use('/blog', blogRouter)
 app.use('/dashboard', dashboardRouter)
 app.use('/account', accountRouter)
 

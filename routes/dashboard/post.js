@@ -10,7 +10,6 @@ router.get('/', function (req, res) {
         .populate({ path: 'category', model: Category })
         .sort({ $natural: -1 })
         .then(posts => {
-            console.log(posts)
             res.render('dashboard/posts', { layout: 'dashboard', posts: posts, title: 'Blog Listesi' })
     })
 })
