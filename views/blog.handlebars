@@ -21,7 +21,10 @@
                                             {{title}}
                                         </a>
                                     </h3>
-                                    <p>{{content}}</p>
+                                    <p>
+                                        {{truncate content 200}}
+                                        <a href="/blog/{{_id}}" class="text-primary">Read More 👆</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
