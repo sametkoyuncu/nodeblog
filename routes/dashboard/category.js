@@ -27,6 +27,29 @@ router.post('/', function (req, res) {
     })
 })
 
+router.get('/edit/:id', function (req, res) {
+    Category.findOne({ _id: req.params.id }).then(category => {
+        res.render('dashboard/category-edit', { layout: 'dashboard', category: category, title: 'Kategori Düzenle' })
+    })
+})
+
+router.put('/edit/:id', function (req, res) {
+    Category.findOne({ _id: req.params.id }).then(category => {
+        category.name = req.body.name
+
+        category.save().then(category => {
+            req.session.sessionFlash = {
+                type: 'alert alert-success',
+                message: `'${category.name}' isimli kategori başarılı bir şekilde güncellendi.`
+            }
+
+            res.redirect('/dashboard/categories')
+        })
+    })
+
+
+})
+
 router.delete('/:id', function (req, res) {
     Category.deleteOne({ _id: req.params.id }).then(() => {
         req.session.sessionFlash = {

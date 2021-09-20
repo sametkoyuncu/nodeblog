@@ -4,7 +4,6 @@ const Post = require('../models/Post')
 const User = require('../models/User')
 const Category = require('../models/Category')
 
-
 router.get('/', function (req, res) {
     Post.find({})
         .populate({ path: 'category', model: Category })

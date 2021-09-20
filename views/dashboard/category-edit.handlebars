@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="offset-2 col-md-8">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Kategori Düzenle</h6>
+            </div>
+            <div class="card-body">
+                <form class="needs-validation" action="/dashboard/categories/edit/{{category._id}}?_method=PUT" method="POST">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="firstName">Kategori Adı</label>
+                            <input type="text" class="form-control" name="name" value="{{category.name}}" required>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-block mb-4" type="submit">Kaydet</button>
+                </form>
+            </div>
+        </div>        
+    </div>
+</div>
