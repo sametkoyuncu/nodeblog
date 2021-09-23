@@ -1,0 +1,35 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/translations/tr.js"></script>
+<div class="container">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Hakkımızda Sayfasını Düzenle</h6>
+            </div>
+            <div class="card-body">
+                <form class="needs-validation" action="/dashboard/pages/about/{{about._id}}?_method=PUT" method="POST"
+                    enctype="multipart/form-data">
+                    <textarea name="content" id="editor">
+                            {{about.content}}
+                        </textarea>
+                    <hr>
+                    <div class="text-right">
+                        <button class="btn btn-primary mb-1" type="submit">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            language: 'tr'
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>

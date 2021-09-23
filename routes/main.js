@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const Post = require('../models/Post')
-const User = require('../models/User')
 const Category = require('../models/Category')
+const About = require('../models/About')
 
 router.get('/', function (req, res) {
   Post.find({})
@@ -42,7 +42,39 @@ router.get('/', function (req, res) {
 })
 
 router.get('/about', function (req, res) {
-  res.render('about', { title: 'Hakkımızda' })
+  Post.find()
+    .limit(3)
+    .populate({ path: 'category', model: Category })
+    .then((posts) => {
+      Category.aggregate([
+        {
+          $lookup: {
+            from: 'posts',
+            localField: '_id',
+            foreignField: 'category',
+            as: 'posts',
+          },
+        },
+        {
+          $project: {
+            _id: 1,
+            name: 1,
+            num_of_posts: { $size: '$posts' },
+          },
+        },
+      ]).then((categories) => {
+        About.find({})
+          .limit(1)
+          .then((about) => {
+            res.render('about', {
+              posts: posts,
+              title: 'Hakkımızda',
+              categories: categories,
+              about: about[0],
+            })
+          })
+      })
+    })
 })
 
 module.exports = router
