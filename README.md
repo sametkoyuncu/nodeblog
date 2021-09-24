@@ -37,3 +37,7 @@ Password: 1232
 - ☝🏻 add services
 
 - ✌🏻 add controllers
+
+# known issues
+
+- category widget not showing numbers on some pages (etc. single blog)
