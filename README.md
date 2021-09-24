@@ -7,10 +7,10 @@ Blog project with node.js, express.js and mongodb..
 
 - Download this repo.
 - Open repo folder in terminal.
-- Install using npm:
+- Install dependencies using npm:
 
 ```bash
-npm install express-handlebars
+npm install
 ```
 
 - Run project:
