@@ -13,7 +13,11 @@ router.get('*', function (req, res, next) {
 })
 
 router.get('/', function (req, res) {
-  res.render('dashboard/home', { layout: 'dashboard', title: 'Anasayfa' })
+  res.render('dashboard/home', {
+    layout: 'dashboard',
+    title: 'Anasayfa',
+    active: { dashboard: true },
+  })
 })
 
 router.use('/posts', postRouter)

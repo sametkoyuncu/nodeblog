@@ -11,6 +11,7 @@ router.get('/about', function (req, res) {
         layout: 'dashboard',
         title: 'Hakkımızda',
         about: about[0],
+        active: { page: true, pageAbout: true },
       })
     })
 })
@@ -36,6 +37,7 @@ router.get('/contact', function (req, res) {
         layout: 'dashboard',
         title: 'İletişim',
         contact: contact[0],
+        active: { page: true, pageContact: true },
       })
     })
 })

@@ -12,7 +12,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
+    <li class="nav-item {{#if active.dashboard}}active{{/if}}">
         <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Anasayfa</span></a>
@@ -37,41 +37,48 @@
     </li> --}}
 
     <!-- Nav Item - Blog Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog" aria-expanded="true"
-            aria-controls="collapseTwo">
+    <li class="nav-item {{#if active.blog}}active{{/if}}">
+        <a class="nav-link {{#if active.blog}}{{/if}}{{#else}}collapsed{{/else}}" href="#" data-toggle="collapse"
+            data-target="#collapseBlog" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-book"></i>
             <span>Blog</span>
         </a>
-        <div id="collapseBlog" class="collapse" aria-labelledby="headingBlog" data-parent="#accordionSidebar">
+        <div id="collapseBlog" class="collapse {{#if active.blog}}show{{/if}}" aria-labelledby="headingBlog"
+            data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 {{!-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                <a class="collapse-item" href="/dashboard/posts"><i class="fas fa-fw fa-list"></i> Blog Listesi</a>
-                <a class="collapse-item" href="/dashboard/posts/new"><i class="fas fa-fw fa-plus"></i> Yeni Ekle</a>
+                <a class="collapse-item {{#if active.blogList}}active{{/if}}" href="/dashboard/posts"><i
+                        class="fas fa-fw fa-list"></i> Blog Listesi</a>
+                <a class="collapse-item {{#if active.blogNew}}active{{/if}}" href="/dashboard/posts/new"><i
+                        class="fas fa-fw fa-plus"></i> Yeni Ekle</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Category -->
-    <li class="nav-item">
-        <a class="nav-link" href="/dashboard/categories">
+    <li class="nav-item {{#if active.category}}active{{/if}}">
+        <a class=" nav-link" href="/dashboard/categories">
             <i class="fas fa-fw fa-flag"></i>
             <span>Kategoriler</span></a>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSayfalar"
-            aria-expanded="true" aria-controls="collapseTwo">
+    <li class="nav-item {{#if active.page}}active{{/if}}">
+        <a class="nav-link {{#if active.page}}{{/if}}{{#else}}collapsed{{/else}}" href="#" data-toggle="collapse"
+            data-target="#collapseSayfalar" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-file"></i>
             <span>Sayfalar</span>
         </a>
-        <div id="collapseSayfalar" class="collapse" aria-labelledby="headingSayfalar" data-parent="#accordionSidebar">
+        <div id="collapseSayfalar" class="collapse {{#if active.page}}show{{/if}}" aria-labelledby="headingSayfalar"
+            data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 {{!-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                <a class="collapse-item" href="/dashboard/pages/about"><i class="far fa-fw fa-question-circle"></i>
+                <a class="collapse-item {{#if active.pageAbout}}active{{/if}}" href="/dashboard/pages/about"><i
+                        class="far fa-fw fa-question-circle"></i>
                     Hakkımızda</a>
-                <a class="collapse-item" href="#"><i class="far fa-fw fa-envelope"></i> İletişim</a>
+                <a class="collapse-item {{#if active.pageContact}}active{{/if}}" href="/dashboard/pages/contact"><i
+                        class="far fa-fw fa-envelope"></i>
+                    İletişim</a>
             </div>
         </div>
     </li>

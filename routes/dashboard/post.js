@@ -1,38 +1,40 @@
-const express = require("express")
+const express = require('express')
 const router = express.Router()
-const Post = require("../../models/Post")
-const Category = require("../../models/Category")
-const User = require("../../models/User")
-const path = require("path")
+const Post = require('../../models/Post')
+const Category = require('../../models/Category')
+const User = require('../../models/User')
+const path = require('path')
 
-router.get("/", function (req, res) {
+router.get('/', function (req, res) {
   Post.find({})
-    .populate({ path: "category", model: Category })
+    .populate({ path: 'category', model: Category })
     .sort({ $natural: -1 })
     .then((posts) => {
-      res.render("dashboard/posts", {
-        layout: "dashboard",
+      res.render('dashboard/posts', {
+        layout: 'dashboard',
         posts: posts,
-        title: "Blog Listesi",
+        title: 'Blog Listesi',
+        active: { blog: true, blogList: true },
       })
     })
 })
 
-router.get("/new", function (req, res) {
+router.get('/new', function (req, res) {
   Category.find({}).then((categories) => {
-    res.render("dashboard/post-create", {
-      layout: "dashboard",
-      title: "Yeni Blog Ekle",
+    res.render('dashboard/post-create', {
+      layout: 'dashboard',
+      title: 'Yeni Blog Ekle',
       categories: categories,
+      active: { blog: true, blogNew: true },
     })
   })
 })
 
-router.post("/new", function (req, res) {
+router.post('/new', function (req, res) {
   let postImage = req.files.image
   let postImageName = Date.now() + postImage.name
   postImage.mv(
-    path.resolve(__dirname, "../../public/img/uploaded/posts", postImageName)
+    path.resolve(__dirname, '../../public/img/uploaded/posts', postImageName)
   )
 
   Post.create({
@@ -42,22 +44,22 @@ router.post("/new", function (req, res) {
   })
 
   req.session.sessionFlash = {
-    type: "alert alert-success",
+    type: 'alert alert-success',
     message: `'${req.body.title}' isimli blog başarılı bir şekilde paylaşıldı.`,
   }
 
-  res.redirect("/dashboard/posts")
+  res.redirect('/dashboard/posts')
   // res.status(201).render('dashboard/posts', { layout: 'dashboard' })
 })
 
-router.get("/edit/:id", function (req, res) {
+router.get('/edit/:id', function (req, res) {
   Post.findOne({ _id: req.params.id })
-    .populate({ path: "category", model: Category })
+    .populate({ path: 'category', model: Category })
     .then((post) => {
       Category.find({}).then((categories) => {
-        res.render("dashboard/post-edit", {
-          layout: "dashboard",
-          title: "Blog Düzenle",
+        res.render('dashboard/post-edit', {
+          layout: 'dashboard',
+          title: 'Blog Düzenle',
           post: post,
           categories: categories,
         })
@@ -65,12 +67,12 @@ router.get("/edit/:id", function (req, res) {
     })
 })
 
-router.put("/edit/:id", function (req, res) {
+router.put('/edit/:id', function (req, res) {
   if (req.body.image != null) {
     let postImage = req.files.image
     let postImageName = Date.now() + postImage.name
     postImage.mv(
-      path.resolve(__dirname, "../../public/img/uploaded/posts", postImageName)
+      path.resolve(__dirname, '../../public/img/uploaded/posts', postImageName)
     )
 
     Post.findOne({ _id: req.params.id }).then((post) => {
@@ -83,11 +85,11 @@ router.put("/edit/:id", function (req, res) {
 
       post.save().then((post) => {
         req.session.sessionFlash = {
-          type: "alert alert-success",
+          type: 'alert alert-success',
           message: `'${req.body.title}' isimli blog başarılı bir şekilde güncellendi.`,
         }
 
-        res.redirect("/dashboard/posts")
+        res.redirect('/dashboard/posts')
       })
     })
   }
@@ -101,23 +103,23 @@ router.put("/edit/:id", function (req, res) {
 
     post.save().then((post) => {
       req.session.sessionFlash = {
-        type: "alert alert-success",
+        type: 'alert alert-success',
         message: `'${req.body.title}' isimli blog başarılı bir şekilde güncellendi.`,
       }
 
-      res.redirect("/dashboard/posts")
+      res.redirect('/dashboard/posts')
     })
   })
 })
 
-router.delete("/:id", function (req, res) {
+router.delete('/:id', function (req, res) {
   Post.deleteOne({ _id: req.params.id }).then(() => {
     req.session.sessionFlash = {
-      type: "alert alert-success",
-      message: "Blog başarılı bir şekilde silindi.",
+      type: 'alert alert-success',
+      message: 'Blog başarılı bir şekilde silindi.',
     }
 
-    res.redirect("/dashboard/posts")
+    res.redirect('/dashboard/posts')
   })
 })
 
