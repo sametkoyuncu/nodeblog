@@ -25,6 +25,13 @@ npm run watch
 http://localhost:3000
 ```
 
+- Dashboard Login Infos:
+
+```bash
+Eposta: admin@mail.com
+Password: 1232
+```
+
 # todo list (after finishing the course)
 
 - ☝🏻 add services
