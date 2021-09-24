@@ -1,7 +1,8 @@
 // getting-started.js
 const mongoose = require('mongoose')
 const connectionString =
-  process.env.MONGODB_CONNECTION_STRING || 'mongodb://localhost:27017/week-6'
+  process.env.MONGODB_CONNECTION_STRING ||
+  'mongodb+srv://nodeblog:node_blog_db@cluster0.4vcb8.mongodb.net/nodeblog?retryWrites=true&w=majority'
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
