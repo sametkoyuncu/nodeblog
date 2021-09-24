@@ -28,7 +28,7 @@ http://localhost:3000
 - Dashboard Login Infos:
 
 ```bash
-Eposta: admin@mail.com
+Email: admin@mail.com
 Password: 1232
 ```
 
