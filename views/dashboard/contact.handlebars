@@ -1,0 +1,56 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/translations/tr.js"></script>
+<div class="container">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">İletişim Sayfasını Düzenle</h6>
+            </div>
+            <div class="card-body">
+                <form class="needs-validation" action="/dashboard/pages/contact/{{contact._id}}?_method=PUT"
+                    method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" name="email" value="{{contact.email}}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone">Phone</label>
+                            <input type="text" class="form-control" name="phone" value="{{contact.phone}}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" name="address" value="{{contact.address}}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="editor">Açıklama Yazısı</label>
+                            <textarea name="content" id="editor">
+                                {{contact.content}}
+                            </textarea>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-right">
+                        <button class="btn btn-primary mb-1" type="submit">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            language: 'tr'
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>

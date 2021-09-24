@@ -1,8 +1,16 @@
 const express = require('express')
 const router = express.Router()
+const Contact = require('../models/Contact')
 
 router.get('/', function (req, res) {
-  res.render('contact', { title: 'İletişim' })
+  Contact.find({})
+    .limit(1)
+    .then((contact) => {
+      res.render('contact', {
+        title: 'İletişim',
+        contact: contact[0],
+      })
+    })
 })
 
 router.post('/email', function (req, res) {

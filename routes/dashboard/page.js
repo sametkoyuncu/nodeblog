@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const About = require('../../models/About')
+const Contact = require('../../models/Contact')
 
 router.get('/about', function (req, res) {
   About.find({})
@@ -20,10 +21,38 @@ router.put('/about/:id', function (req, res) {
     about.save()
     req.session.sessionFlash = {
       type: 'alert alert-success',
-      message: ` isimli kategori başarılı bir şekilde güncellendi.`,
+      message: 'Değişiklikler başarıyla kaydedildi.',
     }
 
     res.redirect('/dashboard/pages/about')
+  })
+})
+
+router.get('/contact', function (req, res) {
+  Contact.find({})
+    .limit(1)
+    .then((contact) => {
+      res.render('dashboard/contact', {
+        layout: 'dashboard',
+        title: 'İletişim',
+        contact: contact[0],
+      })
+    })
+})
+
+router.put('/contact/:id', function (req, res) {
+  Contact.findOne({ _id: req.params.id }).then((contact) => {
+    contact.content = req.body.content
+    contact.email = req.body.email
+    contact.phone = req.body.phone
+    contact.address = req.body.address
+    contact.save()
+    req.session.sessionFlash = {
+      type: 'alert alert-success',
+      message: 'Değişiklikler başarıyla kaydedildi.',
+    }
+
+    res.redirect('/dashboard/pages/contact')
   })
 })
 
