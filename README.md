@@ -19,6 +19,12 @@ npm install
 npm run watch
 ```
 
+- Open link in browser:
+
+```bash
+http://localhost:3000
+```
+
 # todo list (after finishing the course)
 
 - ☝🏻 add services
