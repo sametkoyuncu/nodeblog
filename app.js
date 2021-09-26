@@ -5,6 +5,7 @@ const methodOverride = require('method-override')
 require('dotenv').config()
 
 require('./mongo-connection')
+require('./createDummyData/index')
 // require('./express-session')
 
 const app = express()

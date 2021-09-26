@@ -29,7 +29,7 @@ http://localhost:3000
 
 ```bash
 Email: admin@mail.com
-Password: 1232
+Password: 123456
 ```
 
 # todo list (after finishing the course)
