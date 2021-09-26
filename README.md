@@ -5,6 +5,8 @@ Blog project with node.js, express.js and mongodb..
 
 # Installation
 
+- Download and install [Node.js](https://nodejs.org/en/)
+- Download and install [MongoDB](https://www.mongodb.com/try/download/community)
 - Download this repo.
 - Open repo folder in terminal.
 - Install dependencies using npm:
@@ -16,7 +18,7 @@ npm install
 - Run project:
 
 ```bash
-npm run watch
+npm run start
 ```
 
 - Open link in browser:
@@ -28,6 +30,7 @@ http://localhost:3000
 - Dashboard Login Infos:
 
 ```bash
+Url: http://localhost:3000/account/login
 Email: admin@mail.com
 Password: 123456
 ```
