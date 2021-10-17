@@ -35,8 +35,11 @@ Email: admin@mail.com
 Password: 123456
 ```
 
-# screenshot
+# screenshots
+### home page
 ![homepage](https://raw.githubusercontent.com/sametkoyuncu/nodeblog/main/screenshots/homepage.png)
+### dashboard
+![dashboard](https://raw.githubusercontent.com/sametkoyuncu/nodeblog/main/screenshots/dashboard.png)
 
 # todo list (after finishing the course)
 
