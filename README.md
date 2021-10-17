@@ -35,6 +35,9 @@ Email: admin@mail.com
 Password: 123456
 ```
 
+# screenshot
+![homepage](https://raw.githubusercontent.com/sametkoyuncu/nodeblog/main/screenshots/homepage.png)
+
 # todo list (after finishing the course)
 
 - ☝🏻 add services
