@@ -3,7 +3,7 @@
 Blog project with node.js, express.js and mongodb..
 [Course Link (done 👍)](https://www.youtube.com/watch?v=yR7tAOJC-8M&list=PL-Hkw4CrSVq8QPLj2UDB-GAtQvBaCBG4D)
 
-(Screenshots 👇)
+[Screenshots 👇](https://github.com/sametkoyuncu/nodeblog/blob/main/README.md#screenshots)
 
 # Installation
 
