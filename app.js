@@ -35,7 +35,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost:27017/nodeblog',
+      mongoUrl: process.env.MONGODB_CONNECTION_STRING,
     }),
   })
 )
