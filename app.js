@@ -21,7 +21,7 @@ const accountRouter = require('./routes/account')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
 const { generateDate, limit, truncate, paginate } = require('./helpers/hbs')
-const port = 3000
+const port = process.env.PORT || 3002
 
 // session start
 const expressSession = require('express-session')
