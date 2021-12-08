@@ -3,6 +3,8 @@
 Blog project with node.js, express.js and mongodb..
 [Course Link (done 👍)](https://www.youtube.com/watch?v=yR7tAOJC-8M&list=PL-Hkw4CrSVq8QPLj2UDB-GAtQvBaCBG4D)
 
+[Screenshots 👇](https://github.com/sametkoyuncu/nodeblog/blob/main/README.md#screenshots)
+
 # Installation
 
 - Download and install [Node.js](https://nodejs.org/en/)
@@ -34,6 +36,12 @@ Url: http://localhost:3000/account/login
 Email: admin@mail.com
 Password: 123456
 ```
+
+# screenshots
+### home page
+![homepage](https://raw.githubusercontent.com/sametkoyuncu/nodeblog/main/screenshots/homepage.png)
+### dashboard
+![dashboard](https://raw.githubusercontent.com/sametkoyuncu/nodeblog/main/screenshots/dashboard.png)
 
 # todo list (after finishing the course)
 
